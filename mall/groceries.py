@@ -3,13 +3,15 @@ from typing import Text
 import telebot
 from telebot import types
 from config import TOKEN
-from keyboa import Keyboa
+from telegram_bot_pagination import InlineKeyboardPaginator
+
 
 
 def main():
     bot = telebot.TeleBot(TOKEN)
     mi_id = None
     to_buy = []
+    menu = types.InlineKeyboardMarkup(keyboard=None)
     groceires_type = ["Пластиковая продукция", "Приправы", "Мясные продукты", 'Овощи и фрукты' , "Молочные продукты", "Чипсы и прочее", "Сладкое", "Бумажная продукция", "Яйца", "Алкоголь и остальная вода"]
     spices = ['', '', '']
     vegetables__fruits = ['Бананы', "Яблоки", "Мандарины", "Апельсины", "Груши", "Манго", "Киви", "Лимоны", "Помидоры", "Огурцы", "Лук", "Грибы"]
@@ -48,6 +50,8 @@ def main():
         markup.add(veg_fruits_products_btn, milk_products_btn)
         markup.add(snack_products_btn, sweet_products_btn)
         markup.add(paper_products_btn, eggs_btn, alco_water_products_btn)
+        menu = types.InlineKeyboardMarkup(keyboard=markup)
+        print(menu)
         bot.send_message(message.chat.id, text='Выберете категерию продуктов', reply_markup=markup)
 
     # @bot.message_handler(commands=['buy'])
@@ -57,6 +61,10 @@ def main():
     
     @bot.callback_query_handler(func=lambda call: True)
     def show_product_category(call):
+
+        back_btn = types.InlineKeyboardButton('Go back', callback_data='back')
+
+
         # Making keyboard for vegetables and fruits
         markup_veg = types.InlineKeyboardMarkup()
 
@@ -83,7 +91,8 @@ def main():
         markup_veg.add(pears_btn, mango_btn)
         markup_veg.add(kiwi_btn, lemons_btn)
         markup_veg.add(tomatoes_btn, cucumbers_btn)
-        markup_veg.add(onion_btn, mushrooms_btn)
+        markup_veg.add(onion_btn, mushrooms_btn, back_btn)
+        print(menu)
         #-----------------------------------------------
 
         # Making keyboard for smth sweet
@@ -121,6 +130,8 @@ def main():
         # Making plastic products
         markup_plastic = types.InlineKeyboardMarkup()
 
+        paginator =  InlineKeyboardPaginator(2, )
+
         bot.answer_callback_query(callback_query_id=call.id, text = '')
         if call.data == '3':
             bot.send_message(call.message.chat.id, reply_markup=markup_meat, text='Выберете что-то из мясных продуктов')
@@ -128,11 +139,9 @@ def main():
         if call.data == '4':
             bot.send_message(call.message.chat.id, reply_markup=markup_veg, text='Выберете фрукты или овощи')
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
-        if call.data == '7':
-            bot.send_message(call.message.chat.id, reply_markup=markup_sweet, text='Выберете что-то из сладкого')
+        if call.data == 'back':
+            bot.send_message(call.message.chat.id, reply_markup=menu, text = 'u choose go back')
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
-        
-
 
     bot.polling()
 
