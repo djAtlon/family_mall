@@ -7,8 +7,9 @@ from keyboa import Keyboa
 
 def main():
     bot = telebot.TeleBot(TOKEN)
-    my_id = 536148350
     to_buy = []
+    my_id = 536148350
+    to_buy_string = ''
     groceires_type = ["Пластиковая продукция", "Приправы", "Мясные продукты", 'Овощи и фрукты' , "Молочные продукты", "Чипсы и прочее", "Сладкое", "Бумажная продукция", "Яйца", "Алкоголь и остальная вода"]
     plastic = ['Пластиковые стаканчики', 'Пластиковые тарелки', 'Пластиковые столовые приборы', 'Мусорные пакеты']
     spices = ['Кетчуп', 'Горчица', 'Соус']
@@ -121,9 +122,7 @@ def main():
         markup_sweet = types.InlineKeyboardMarkup()
 
         cookie_btn = types.InlineKeyboardButton(sweet[0], callback_data=23)
-        candy_btn = types.InlineKeyboardButton(sweet[1], callback_data=24)
-        candy_btn = types.InlineKeyboardButton(sweet[1], callback_data=24)
-
+        candy_btn = types.InlineKeyboardButton(sweet[1], callback_data = 24)
         chocolate_btn = types.InlineKeyboardButton(sweet[2], callback_data=25)
         cake_btn = types.InlineKeyboardButton(sweet[3], callback_data=26)
         bakery_btn = types.InlineKeyboardButton(sweet[4], callback_data=27)
@@ -306,12 +305,215 @@ def main():
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
         elif call.data == 'paper':
             bot.send_message(call.message.chat.id, reply_markup = markup_paper, text = 'Выберете что-то из бумажной продукции')
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+           # if call.data == '36':
+            #    to_buy.append(plastic[0])
+            #elif call.data == '37':
+            #    to_buy.append(plastic[1])
+            #elif call.data == '38':
+            #    to_buy.append(plastic[2])
+            #elif call.data == '39':
+                #to_buy.append(plastic[3])
+
         elif call.data == 'water':
             bot.send_message(call.message.chat.id, reply_markup = markup_water, text = 'Выберете что-то из напитков')
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+        elif call.data == '11':
+            to_buy.append(vegetables__fruits[0])
+            bot.send_message(my_id, text = vegetables__fruits[0])
+            #bot.send_message(my_id, to_buy)
+        elif call.data == '12':
+            to_buy.append(vegetables__fruits[1])
+            bot.send_message(my_id, text = vegetables__fruits[1])
+            #bot.send_message(my_id, to_buy)
+        elif call.data == '13':
+            to_buy.append(vegetables__fruits[2])
+            bot.send_message(my_id, text = vegetables__fruits[2])
+        elif call.data == '14':
+            to_buy.append(vegetables__fruits[3])
+            bot.send_message(my_id, text = vegetables__fruits[3])
+        elif call.data == '15':
+            to_buy.append(vegetables__fruits[4])
+            bot.send_message(my_id, text = vegetables__fruits[4])
+        elif call.data == '16':
+            to_buy.append(vegetables__fruits[5])
+            bot.send_message(my_id, text = vegetables__fruits[6])
+        elif call.data == '17':
+            to_buy.append(vegetables__fruits[6])
+            bot.send_message(my_id, text = vegetables__fruits[7])
+        elif call.data == '18':
+            to_buy.append(vegetables__fruits[7])
+            bot.send_message(my_id, text = vegetables__fruits[7])
+        elif call.data == '19':
+            to_buy.append(vegetables__fruits[8])
+            bot.send_message(my_id, text = vegetables__fruits[8])
+        elif call.data == '20':
+            to_buy.append(vegetables__fruits[9])
+            bot.send_message(my_id, text = vegetables__fruits[9])
+        elif call.data == '21':
+            to_buy.append(vegetables__fruits[10])
+            bot.send_message(my_id, text = vegetables__fruits[10])
+        elif call.data == '22':
+            to_buy.append(vegetables__fruits[11])
+            bot.send_message(my_id, text = vegetables__frutis[11])
+        elif call.data == '23':
+            to_buy.append(sweet[0])
+            bot.send_message(my_id, text = sweet[0])
+        elif call.data == '24':
+            to_buy.append(sweet[1])
+            bot.send_message(my_id, text = sweet[1])
+        elif call.data == '25':
+            to_buy.append(sweet[2])
+            bot.send_message(my_id, text = sweet[2])
+        elif call.data == '26':
+            to_buy.append(sweet[3])
+            bot.send_message(my_id, text = sweet[3])
+        elif call.data == '27':
+            to_buy.append(sweet[4])
+            bot.send_message(my_id, text = sweet[4])
+        elif call.data == '28':
+            to_buy.append(meat[0])
+            bot.send_message(my_id, text = meat[0])
+        elif call.data == '29':
+            to_buy.append(meat[1])
+            bot.send_message(my_id, text = meat[1])
+        elif call.data == '30':
+            to_buy.append(meat[2])
+            bot.send_message(my_id, text = meat[2])
+        elif call.data == '31':
+            to_buy.append(meat[3])
+            bot.send_message(my_id, text = meat[3])
+        elif call.data == '32':
+            to_buy.append(meat[4])
+            bot.send_message(my_id, text = meat[4])
+        elif call.data == '33':
+            to_buy.append(meat[5])
+            bot.send_message(my_id, text = meat[5])
+        elif call.data == '34':
+            to_buy.append(meat[6])
+            bot.send_message(my_id, text = meat[6])
+        elif call.data == '35':
+            to_buy.append(meat[7])
+            bot.send_message(my_id, text = meat[7])
+        elif call.data == '36':
+            to_buy.append(plastic[0])
+            bot.send_message(my_id, text = plastic[0])
+           # to_buy_string += plastic[0] + '\n'
+        elif call.data == '37':
+            to_buy.append(plastic[1])
+            bot.send_message(my_id, text = plastic[1])
+           # to_buy_string += plastic[1] + '\n'
+        elif call.data == '38':
+            to_buy.append(plastic[2])
+            bot.send_message(my_id, text = plastic[2])
+           # to_buy_string += plastic[2] + '\n'
+        elif call.data == '39':
+            to_buy.append(plastic[3])
+            bot.send_message(my_id, text = plastic[3])
+        elif call.data == '40':
+            to_buy.append(milk[0])
+            bot.send_message(my_id, text = milk[0])
+        elif call.data == '41':
+            to_buy.append(milk[1])
+            bot.send_message(my_id, text = milk[1])
+        elif call.data == '42':
+            to_buy.append(milk[2])
+            bot.send_message(my_id, text = milk[2])
+        elif call.data == '43':
+            to_buy.append(milk[3])
+            bot.send_message(my_id, text = milk[3])
+        elif call.data == '44':
+            to_buy.append(milk[4])
+            bot.send_message(my_id, text = milk[4])
+        elif call.data == '45':
+            to_buy.append(milk[5])
+            bot.send_message(my_id, text = milk[5])
+        elif call.data == '46':
+            to_buy.append(milk[6])
+            bot.send_message(my_id, text = milk[6])
+        elif call.data == '48':
+            to_buy.append(spices[0])
+            bot.send_message(my_id, text = spices[0])
+        elif call.data == '49':
+            to_buy.append(spices[1])
+            bot.send_message(my_id, text = spices[1])
+        elif call.data == '50':
+            to_buy.append(spices[2])
+            bot.send_message(my_id, text = spices[2])
+        elif call.data == '51':
+            to_buy.append(snacks[0])
+            bot.send_message(my_id, text = snacks[0])
+        elif call.data == '52':
+            to_buy.append(snacks[1])
+            bot.send_message(my_id, text = snacks[1])
+        elif call.data == '53':
+            to_buy.append(snacks[2])
+            bot.send_message(my_id, text = snacks[2])
+        elif call.data == '54':
+            to_buy.append(paper[0])
+            bot.send_message(my_id, text = paper[0])
+        elif call.data == '55':
+            to_buy.append(paper[1])
+            bot.send_message(my_id, text = paper[1])
+        elif call.data == '56':
+            to_buy.append(paper[2])
+            bot.send_message(my_id, text = paper[2])
+        elif call.data == '57':
+            to_buy.append(alco_water[0])
+            bot.send_message(my_id, text = alco_water[0])
+        elif call.data == '58':
+            to_buy.append(alco_water[1])
+            bot.send_message(my_id, text = alco_water[1])
+        elif call.data == '59':
+            to_buy.append(alco_water[2])
+            bot.send_message(my_id, text = alco_water[2])
+        elif call.data == '60':
+            to_buy.append(alco_water[3])
+            bot.send_message(my_id, text = alco_water[3])
+        elif call.data == '61':
+            to_buy.append(alco_water[4])
+            bot.send_message(my_id, text = alco_water[4])
+        elif call.data == '62':
+            to_buy.append(alco_water[5])
+            bot.send_message(my_id, text = alco_water[5])
+        elif call.data == '63':
+            to_buy.append(alco_water[6])
+            bot.send_message(my_id, text = alco_water[6])
+        elif call.data == '64':
+            to_buy.append(alco_water[7])
+            bot.send_message(my_id, text = alco_water[7])
+        elif call.data == '65':
+            to_buy.append(alco_water[8])
+            bot.send_message(my_id, text = alco_water[8])
+        elif call.data == '66':
+            to_buy.append(alco_water[9])
+            bot.send_message(my_id, text = alco_water[9])
+        elif call.data == '67':
+            to_buy.append(alco_water[10])
+            bot.send_message(my_id, text = alco_water[10])
+        elif call.data == '68':
+            to_buy.append(alco_water[11])
+            bot.send_message(my_id, text = alco_water[11])
+        elif call.data == '69':
+            to_buy.append(alco_water[12])
+            bot.send_message(my_id, text = alco_water[12])
+        elif call.data == '70':
+            to_buy.append(alco_water[13])
+            bot.send_message(my_id, text = alco_water[13])
+        elif call.data == '71':
+            to_buy.append(alco_water[14])
+            bot.send_message(my_id, text = alco_water[14])
+    
+    @bot.message_handler(commands = ['end'])
+    def send_list_of_products(message):
+        pass
+#        bot.send_message(my_id, text = buy)
 
     bot.polling()
-
+    print(to_buy)
+    #@bot.message_handler(commands = ['end'])
+    #def send_list_of_products(message):
+     #   bot.send_message(my_id, text = to_buy)
 if __name__ == '__main__':
     main()
 		
